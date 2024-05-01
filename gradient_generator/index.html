@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <sectioN>
+        <div class="btn">
+            <button id="myButton">#987654</button>
+            <button id="myButton2">#098765</button>
+        </div>
+        <h2> copy your code here</h2>
+        <div class="copycode">
+            background-image: linear-gradient(to right, rbg(92,145,229),rgb(152,63,198))
+        </div>
+    </sectioN>
+    <script>
+        let btn1 = document.getElementById("myButton");
+        let btn2 = document.getElementById("myButton2");
+        let copy=document.querySelector(".copycode");
+        let rgb1="#000";
+        let rgb2="#ffff";
+        
+        const haxvals=()=>{
+            let hexaval = "0123456789abcdef";
+            let colors="#";
+            for(let i=0;i<6;i++){
+                colors=colors+hexaval[Math.floor(Math.random()*16)];
+                
+            }
+            return colors;
+        };
+        const handleButton1 = () => {
+             rgb1=haxvals();
+             btn1.innerHTML=rgb1;
+            console.log(rgb1);
+            document.body.style.backgroundImage=
+              `linear-gradient(to right, ${rgb1}, ${rgb2})`;
+            copy.innerHTML=`background-image: linear-gradient(to right,  rgb(${rgb1}),rgb(${rgb2}))`;
+        };
+        const handleButton2 = () => {
+             rgb2=haxvals();
+             btn2.innerHTML=rgb2;
+            console.log(rgb2);
+            document.body.style.backgroundImage=
+              `linear-gradient(to right, ${rgb1}, ${rgb2})`;
+            copy.innerHTML=`background-image: linear-gradient(to right,  rgb(${rgb1}),rgb(${rgb2}))`;
+        };
+
+        btn1.addEventListener("click", handleButton1);
+        btn2.addEventListener("click", handleButton2);
+        copy.addEventListener("click",()=>{
+            navigator.clipboard.writeText(copy.innerText);
+            alert("Your text is copied");
+        })
+    </script>
+</body>
+
+</html>
