@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1> todo List</h1>
+    <br/>
+    <form>
+        <div>
+        <input type="text" id="inputValue"/>
+        <button class="btn">Add Todo</button>
+        </div>
+        <section class="todo-lists-elem"></section>
+    </form>
+    <script>
+        const mainTodoElem= document.querySelector(".todo-lists-elem");
+        const inputValue=document.getElementById("inputValue");
+        
+        const getTodoList=()=>{
+            return JSON.parse(localStorage.getItem("todoList"));
+        };
+
+        const addlistitems=(localTodoklist)=>{
+            return localStorage.setItem("todoList",JSON.stringify(localTodoklist));
+        }
+        let localstoragelist=getTodoList() || [];
+
+        const addToodoval=(e)=>{
+            const divElement=document.createElement("div");
+            divElement.classList.add("main_todo_div");
+            divElement.innerHTML=`<li> ${e}</li> <button class="deleteBtn">Delete</button>`;
+            mainTodoElem.append(divElement);
+        }
+
+        const addTodoList=(e)=>{
+            e.preventDefault();
+            const todolistvalue=inputValue.value.trim();
+            
+            localstoragelist.push(todolistvalue);
+            localstoragelist=[...new Set(localstoragelist)];
+            console.log(localstoragelist);
+            localStorage.setItem("todoList", JSON.stringify(localstoragelist));
+
+
+            const divElement=document.createElement("div");
+            divElement.classList.add("main_todo_div");
+            divElement.innerHTML=`<li> ${inputValue.value}</li> <button class="deleteBtn">Delete</button>`;
+            mainTodoElem.append(divElement);
+        }
+        
+        const showTodoList=()=>{
+            console.log(localstoragelist);
+            localstoragelist.forEach(currElem => {
+                addToodoval(currElem);
+            });
+        };
+
+        showTodoList();
+
+
+
+        const removeTodo=(e)=>{
+            let todoremove=e.target;
+            let todocontent=todoremove.previousElementSibling.innerText;  // check what does this do
+            // console.log(todocontent);
+            localstoragelist=localstoragelist.filter((currto)=>{
+                return currto!=todocontent.toLowerCase();
+            });
+            addlistitems(localstoragelist);
+        }
+        mainTodoElem.addEventListener("click",(e)=>{
+            e.preventDefault();
+            removeTodo(e);
+        })
+        document.querySelector(".btn").addEventListener('click', (e)=>{
+            addTodoList(e);
+        });
+        </script>
+</body>
+</html>
