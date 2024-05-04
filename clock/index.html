@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="clock">
+        <div class="digital">
+            <h2 id="time">00:00:00</h2>
+        </div>
+    </div>
+    <script>
+        var recenttime=document.getElementById("time");
+        const gettime=()=>{
+            var currentTime= new Date();
+            var s=currentTime.getSeconds();
+            var m=currentTime.getMinutes();
+            var h=currentTime.getHours();
+    
+            recenttime.textContent=("0" + h).substr(-2) +":" +("0"+ m).substr(-2)+":" +("0"+ s).substr(-2);
+        }
+        gettime();
+        setInterval(gettime,1000);
+            
+
+    </script>
+</body>
+</html>
