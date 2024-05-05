@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="box-content">
+                <h2 id="text">Enter your text or url</h2>
+            </div>
+            <input class="link-area">
+            <div class="imgbox">
+                <img src="" id="qr">
+            </div>
+            <button id="btn">Generate Code</button>
+        </div>
+    </div>
+    <script>
+        var val = document.querySelector(".link-area");
+        var imgbox=document.querySelector(".imgbox");
+        var qr=document.getElementById("qr");
+
+        const generate = () => {
+            qr.src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + val.value;
+        }
+
+        document.getElementById("btn").addEventListener("click", generate);
+    </script>
+</body>
+
+</html>
