@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="conatiner">
+        <div class="player">
+            <div class="upperbtn">
+
+                <i id="btn" class="fa-solid fa-arrow-left"></i>
+                <i id="btn2" class="fa-solid fa-bars"></i>
+            </div>
+            <div class="music-img">
+                <img src="./mp.jpg" alt="">
+            </div>
+            <h2>Song Name</h2>
+            <div class="music-line">
+                <audio controls id="song">
+                    <source src="./mwd.mp3" type="audio/mpeg">
+
+                </audio>
+                <input type="range" value="0" id="progress">
+            </div>
+            <div class="down-btn">
+                <button id="ctrlicon">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/9216f07896.js" crossorigin="anonymous"></script>
+    <script>
+        let progress=document.getElementById("progress");
+        let ctrl=document.getElementById("ctrlicon");
+        let song=document.getElementById("song");
+
+        ctrl.addEventListener("click",()=>{
+            if(ctrl.classList.contains("fa-pause")){
+                song.pause();
+                ctrl.classList.remove("fa-pause");
+                ctrl.classList.add("fa-play");
+            }else{
+                song.play();
+                ctrl.classList.remove("fa-play");
+                ctrl.classList.add("fa-pause");
+            }
+        })
+
+        song.onloadedmetadata=function(){
+            progress.max=song.duration;
+            progress.value=song.current;
+        }
+    </script>
+</body>
+
+</html>
