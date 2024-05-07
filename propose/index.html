@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Alex+Brush&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="askk">
+        <h1 id="ask">Will you be my</h1>
+        <h1 id="gf">
+            Girlfriend?
+        </h1>
+        </div>
+        <div class="pic">
+            <img id="pp" src="l1.gif" alt="">
+        </div>
+        <div class="btns">
+            <button id="yes">yes</button>
+            <button id="no">no</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var image = document.getElementById("pp");
+            var text=document.querySelector(".askk");
+            document.getElementById("yes").addEventListener("click", () => {
+                console.log("Button clicked!");
+                image.src = "l2.gif";
+                text.innerHTML="";
+
+            });
+            const wrapper = document.querySelector(".container");
+            const nobtn = document.getElementById("no");
+
+            nobtn.addEventListener("click", () => {
+                const wrapperRect = wrapper.getBoundingClientRect();
+                const nobtnRect = nobtn.getBoundingClientRect();
+
+                const i = Math.floor(Math.random() * (wrapperRect.width - nobtnRect.width));
+                const j = Math.floor(Math.random() * (wrapperRect.height - nobtnRect.height));
+
+                nobtn.style.left = i + 'px';
+                nobtn.style.top = j + 'px';
+            });
+        });
+
+    </script>
+</body>
+
+</html>

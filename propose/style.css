@@ -1,0 +1,82 @@
+body{
+    background: #ffafbd;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#ask{
+    color: #D62034;
+  
+        font-family: "Aclonica", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      
+}
+
+#gf{
+    font-size: 5rem;
+    margin-top: -2rem;
+        font-family: "Alex Brush", cursive;
+        font-weight: 400;
+        font-style: normal;
+}
+
+.pic{
+    margin-top: -2rem;
+}
+
+button{
+    font-size: 1.3rem;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 30px;
+    font-family: cursive;
+}
+
+#no {
+  position: absolute;
+  /* Additional styling if needed */
+}
+@media (max-width: 768px) {
+    .container {
+      padding: 0 20px;
+    }
+    
+  }
+  
+  /* For screens smaller than 576px (smaller phones) */
+  @media (max-width: 576px) {
+    
+    .pic {
+      max-width: 100%; /* Make images responsive */
+      height: auto;
+    }
+    button {
+      font-size: 2.2rem; 
+      padding: 0.5rem; 
+    }
+  }
+  
+ 
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1140px; 
+    }
+  }
+  
+  
+  @media (min-width: 992px) {
+    .container {
+      padding: 0 50px; 
+    }
+    #gf {
+      font-size: 6rem; 
+    }
+  }
+  
