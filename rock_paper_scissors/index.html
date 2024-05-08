@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sec" id="btn">
+            <i class="fa-solid fa-hand-back-fist" id="left"></i>
+            <i class="fa-solid fa-hand-back-fist" id="right"></i>
+        </div>
+        <div class="sec" id="btn2">
+            Select One
+        </div>
+        <div class="sec" id="btn3">
+            <button id="rock"><i class="fa-solid fa-hand-back-fist"></i></button>
+            <button id="paper"><i class="fa-solid fa-hand"></i></button>
+            <button id="scissor"><i class="fa-solid fa-hand-peace"></i></button>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/9216f07896.js" crossorigin="anonymous"></script>
+    <script>
+        var rock = document.getElementById("rock");
+        var pair = document.getElementById("paper");
+        var scissor = document.getElementById("scissor");
+
+        var text = document.getElementById("btn2");
+        var left = document.getElementById("left");
+        var right = document.getElementById("right");
+
+        const choice = ["rock", "paper", "scissor"];
+
+        const getRandomChoice = () => {
+            const randomIndex = Math.floor(Math.random() * choice.length);
+            return choice[randomIndex];
+        };
+        function shake() {
+            left.classList.add("shake");
+            left.addEventListener("animationend", () => {
+                left.classList.remove("shake");
+            });
+            right.classList.add("shake");
+            right.addEventListener("animationend", () => {
+                right.classList.remove("shake");
+            });
+            setTimeout(1000);
+        }
+        const result = getRandomChoice();
+        rock.addEventListener("click", () => {
+            const result = getRandomChoice();
+            console.log(result);
+            shake();
+            if(result==="paper"){
+                text.innerHTML="Computer Won";
+
+            }
+            else if(result=="scissor"){
+                text.innerHTML="Player Won";
+            }
+            else{
+                text.innerHTML="Its a tie";
+            }
+        });
+        paper.addEventListener("click", () => {
+            const result = getRandomChoice();
+            shake();
+            if(result==="paper"){
+                text.innerHTML="Its a tie";
+
+            }
+            else if(result=="scissor"){
+                text.innerHTML="Computer Won";
+            }
+            else{
+                text.innerHTML="Player Won";
+            }
+        });
+        scissor.addEventListener("click", () => {
+            const result = getRandomChoice();
+            shake();
+            if(result==="paper"){
+                text.innerHTML="Player Won";
+
+            }
+            else if(result=="scissor"){
+                text.innerHTML="Its a tie";
+            }
+            else{
+                text.innerHTML="Computer Won";
+            }
+        });
+    </script>
+</body>
+
+</html>
